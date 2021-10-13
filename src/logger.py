@@ -2,7 +2,7 @@ import logging
 
 
 class Logger:
-    def __init__(self, name):
+    def __init__(self):
         logging.basicConfig(
             filename="game_log.log",
             force=True,

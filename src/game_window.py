@@ -5,6 +5,8 @@ from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtWidgets import QApplication, QLabel, QLineEdit, QPushButton, QWidget
 from PyQt5.QtGui import QFont
 
+from logger import Logger
+
 
 class GameWindow(QWidget):
     def __init__(
@@ -15,6 +17,8 @@ class GameWindow(QWidget):
         self.main_window = main_window
 
         self.number = number
+
+        self.logger = Logger()
 
         self.setWindowTitle("Guess The Number")
         self.setFixedSize(300, 400)
@@ -117,36 +121,47 @@ class GameWindow(QWidget):
         self.guess_button.clicked.connect(self.guess_button_clicked)
 
     def one_clicked(self):
+        self.logger.debug("One button clicked")
         self.guess_input.setText(self.guess_input.text() + "1")
 
     def two_clicked(self):
+        self.logger.debug("Two button clicked")
         self.guess_input.setText(self.guess_input.text() + "2")
 
     def three_clicked(self):
+        self.logger.debug("Three button clicked")
         self.guess_input.setText(self.guess_input.text() + "3")
 
     def four_clicked(self):
+        self.logger.debug("Four button clicked")
         self.guess_input.setText(self.guess_input.text() + "4")
 
     def five_clicked(self):
+        self.logger.debug("Five button clicked")
         self.guess_input.setText(self.guess_input.text() + "5")
 
     def six_clicked(self):
+        self.logger.debug("Six button clicked")
         self.guess_input.setText(self.guess_input.text() + "6")
 
     def seven_clicked(self):
+        self.logger.debug("Seven button clicked")
         self.guess_input.setText(self.guess_input.text() + "7")
 
     def eight_clicked(self):
+        self.logger.debug("Eight button clicked")
         self.guess_input.setText(self.guess_input.text() + "8")
 
     def nine_clicked(self):
+        self.logger.debug("Nine button clicked")
         self.guess_input.setText(self.guess_input.text() + "9")
 
     def zero_clicked(self):
+        self.logger.debug("Zero button clicked")
         self.guess_input.setText(self.guess_input.text() + "0")
 
     def clear_clicked(self):
+        self.logger.debug("Clear button clicked")
         self.guess_input.setText("")
 
     def guess_correct(self):
@@ -160,14 +175,19 @@ class GameWindow(QWidget):
         self.close()
 
     def guess_button_clicked(self):
+        self.logger.debug("Guess button clicked")
         if self.guess_input.text() == "":
+            self.logger.debug("No guess input")
             self.guess_hint.setText("You haven't guessed a number yet.")
         elif int(self.guess_input.text()) == self.number:
+            self.logger.debug("Guess correct")
             self.guess_hint.setText("You guessed the number!")
             QTimer.singleShot(1000, self.guess_correct)
         elif int(self.guess_input.text()) > self.number:
+            self.logger.debug("Guess too high")
             self.guess_hint.setText("Your guess is too high.")
         elif int(self.guess_input.text()) < self.number:
+            self.logger.debug("Guess too low")
             self.guess_hint.setText("Your guess is too low.")
         self.guess_hint.adjustSize()
         self.guess_hint.move(int(self.width() / 2 - self.guess_hint.width() / 2), 285)
