@@ -1,0 +1,12 @@
+# python folders/files
+__pycache__/
+venv/
+
+# pyinstaller folders/files
+build/
+dist/
+*.spec
+
+# miscellaneous
+.vscode/
+game_log.log
