@@ -18,7 +18,7 @@ def check_version():
 
 
 def main():
-    Logger("guessthenumber").info(f"Starting Guess the Number v{check_version()}...")
+    Logger().info(f"Starting Guess the Number v{check_version()}...")
     app = QApplication([])
     window = MainWindow()
     window.show()

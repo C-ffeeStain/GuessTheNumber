@@ -28,7 +28,7 @@ class MainWindow(QMainWindow):
         """Initialize the main window."""
         super().__init__()
 
-        self.logger = Logger("guessthenumber")
+        self.logger = Logger()
 
         self.logger.info("Starting the main menu...")
 
