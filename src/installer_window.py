@@ -88,16 +88,14 @@ class InstallerWindow(QMainWindow):
         self.desktop_shortcut.setFont(QFont("Arial", 10))
         self.desktop_shortcut.adjustSize()
         self.desktop_shortcut.move(
-            10,
-            self.browse_button.y() + self.browse_button.height() + 10,
+            10, self.browse_button.y() + self.browse_button.height() + 10
         )
 
         self.add_to_start_menu = QCheckBox("Add to Start Menu", self)
         self.add_to_start_menu.setFont(QFont("Arial", 10))
         self.add_to_start_menu.adjustSize()
         self.add_to_start_menu.move(
-            10,
-            self.desktop_shortcut.y() + self.desktop_shortcut.height() + 10,
+            10, self.desktop_shortcut.y() + self.desktop_shortcut.height() + 10
         )
 
         self.install_button = QPushButton("Install", self)
@@ -121,9 +119,7 @@ class InstallerWindow(QMainWindow):
     def browse_button_clicked(self):
         """Opens a file browser and sets the install folder."""
         folder = QFileDialog.getExistingDirectory(
-            self,
-            "Select the install folder",
-            self.install_folder_line_edit.text(),
+            self, "Select the install folder", self.install_folder_line_edit.text()
         )
         if folder:
             self.install_folder_line_edit.setText(folder)
@@ -133,9 +129,7 @@ class InstallerWindow(QMainWindow):
             self.install()
         except Exception as e:
             QMessageBox.critical(
-                self,
-                "Error",
-                f"An error occurred while installing the program.\n\n{e}",
+                self, "Error", f"An error occurred while installing the program.\n\n{e}"
             )
 
     def install(self):
